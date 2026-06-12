@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Short Video Toolkit</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div class="badge"><i class="badge-dot"></i> desktop only · dark neon</div>
+      <h1><span class="gradient-text">短视频解析工具台</span></h1>
+      <p class="subtitle">
+        粘贴短视频分享链接，调用解析接口获取无水印高清视频直链，或进入音频转文字演示流程。页面仅使用 HTML + CSS + JavaScript，适合学习和二次改造。
+      </p>
+      <div class="platforms" aria-label="支持平台示例">
+        <span>抖音</span><span>快手</span><span>小红书</span><span>视频号</span><span>微博</span><span>B站</span><span>西瓜</span><span>皮皮虾</span><span>火山</span><span>微视</span><span>秒拍</span><span>美拍</span><span>最右</span><span>淘宝</span><span>Instagram</span><span>TikTok</span><span>YouTube Shorts</span><span>Twitter/X</span><span>Facebook</span><span>Threads</span><span>更多平台</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="input-row">
+        <label for="shareUrl">短视频分享链接</label>
+        <div class="paste-field">
+          <textarea id="shareUrl" spellcheck="false" placeholder="请粘贴分享链接，例如：https://v.douyin.com/xxxx/ 或包含口令的完整分享文本"></textarea>
+          <button class="btn-paste" id="pasteBtn" type="button">粘贴</button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-primary" id="downloadBtn" type="button">下载无水印最高清视频</button>
+        <button class="btn-secondary" id="transcribeBtn" type="button">音频转文字</button>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-title">
+            <h2>视频下载</h2>
+            <button class="btn-soft" id="clearDownloadBtn" type="button">清空</button>
+          </div>
+          <div id="downloadStatus" class="status">等待输入链接并点击下载按钮。</div>
+          <div id="downloadBox" class="download-box"></div>
+          <div class="meta">
+            <div>接口：<code>https://api.bugpk.com/api/short_videos</code></div>
+            <div>说明：请在 JS 中替换 <code>VIDEO_URL_PARAM_NAME</code> 为真实参数名。</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title">
+            <h2>识别结果</h2>
+            <div class="title-actions">
+              <button class="btn-soft" id="transcriptPasteBtn" type="button">粘贴</button>
+              <button class="btn-soft" id="clearTranscriptBtn" type="button">清空</button>
+            </div>
+          </div>
+          <div id="transcribeStatus" class="status">等待点击“音频转文字”。</div>
+          <div class="progress-wrap">
+            <div class="progress-top"><span id="progressText">准备中</span><span id="progressPercent">0%</span></div>
+            <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+          </div>
+          <div id="transcript" class="transcript"><span class="empty">识别出的文字会显示在这里。</span></div>
+          <div class="notice">
+            说明：这里不再提取音频文件，也不再调用浏览器麦克风识别。点击“音频转文字”后会直接读取解析接口返回的文案、字幕、ASR 或文本字段并展示。
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <p class="footer">Neon Video Toolkit · 仅用于学习演示 · Desktop Layout</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
